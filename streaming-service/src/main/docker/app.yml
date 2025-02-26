@@ -11,6 +11,7 @@ services:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_R2DBC_URL=r2dbc:postgresql://postgresql:5432/streamingService
       - SPRING_LIQUIBASE_URL=jdbc:postgresql://postgresql:5432/streamingService
+      - SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS=kafka:9092
     healthcheck:
       test:
         - CMD
@@ -35,3 +36,7 @@ services:
     extends:
       file: ./consul.yml
       service: consul-config-loader
+  kafka:
+    extends:
+      file: ./kafka.yml
+      service: kafka

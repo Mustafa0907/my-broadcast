@@ -1,6 +1,7 @@
 package com.mycompany.myapp;
 
 import com.mycompany.myapp.config.AsyncSyncConfiguration;
+import com.mycompany.myapp.config.EmbeddedKafka;
 import com.mycompany.myapp.config.EmbeddedSQL;
 import com.mycompany.myapp.config.JacksonConfiguration;
 import java.lang.annotation.ElementType;
@@ -16,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @Retention(RetentionPolicy.RUNTIME)
 @SpringBootTest(classes = { StreamingServiceApp.class, JacksonConfiguration.class, AsyncSyncConfiguration.class })
 @EmbeddedSQL
+@EmbeddedKafka
 public @interface IntegrationTest {
     // 5s is Spring's default https://github.com/spring-projects/spring-framework/blob/main/spring-test/src/main/java/org/springframework/test/web/reactive/server/DefaultWebTestClient.java#L106
     String DEFAULT_TIMEOUT = "PT5S";
